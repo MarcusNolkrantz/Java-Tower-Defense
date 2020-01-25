@@ -1,0 +1,43 @@
+Detta har förbättrats i kompletteringen:
+
+Strängar som tillexempel "basic" och "teleporting" har gjorts om till Enumns.
+
+Alla torn håller nu koll på hur de ritas upp och vi behöver inte "fråga" vilken typ av torn det är vid uppritning.
+
+Alla torn håller nu även koll på hurvida de kan skada "iron" eller inte.
+
+Istället för att använda LayoutConstant för att hålla koll på var strängar och boxar ska placeras har vi nu skapat 
+två nya klasser, Box och TextLine, som håller reda på var de ska ritas ut och hur de ska se ut.
+
+Ett nytt enum har skapats som håller koll på justeringen av text.
+
+Varje box och TextLine skapas nu i "framens" konstruktor vilket gör att att de tidigare fem olika painter-klasserna
+för de olika menyerna kunde slås ihop till en, som istället tar in två lister med Boxar och TextLines som argument.
+
+Eftersom varje box har koordinater för sin positon är det nu enkelt att fråga om en Box blivit klickad på och 
+om så är fallet kan man genom en enkel switch-sats växla mellan fönster.
+
+LayoutConstants innehåller numera bara statiska och oförändliga publika fält.
+
+Maps klassen har tagits bort och ersatts med en enum-klass med fälten map1, map2, map3. Varje fält har tre 
+parametrar en sträng med sitt namn, en lista med banan, och en lista med checkpoints.
+
+Filhanteringen för highscores har gjorts om en del. Nu kastar tillexempel readHighscores metoden ett fel som sedan
+tillexempel i Board kan fångas och om felet boror på att filen ej existerar skapas en ny HighscoreLista med 
+default värden som sedan kan sparas till filen. 
+
+Nu sparas bara de 9 bästa scorerna i HighscoreList tillskillnad från tidigare där alla scorerna sparades och de 
+9 första visades.
+
+Inga GameObjects beror på Board längre och är därför mer självständiga.
+
+Om en bild inte kan läsas in kraschade tidigare programmet och skrev ut stacktrace. Nu körs istället programmet
+bara att bilderna ersätts av en textruta.
+
+Klasserna har delats in i sub-packet för att lättare hitta dem.
+
+Musik och ljudeffekter har lagts till.
+
+
+
+ 
